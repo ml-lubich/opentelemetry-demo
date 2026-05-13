@@ -36,6 +36,7 @@ flowchart LR
 - [Layout](#layout)
 - [Author](#author)
 - [🗺️ Repository map](#️-repository-map)
+- [📊 Code composition](#-code-composition)
 
 ## Span lifecycle (state)
 
@@ -126,4 +127,16 @@ mindmap
       README.md
       main.py
       requirements.txt
+```
+
+
+## 📊 Code composition
+
+File-type breakdown of source under this repo (skips `.git`, `node_modules`, build caches, lockfiles).
+
+```mermaid
+pie showData title File-type composition of opentelemetry-demo (5 files)
+    "Python" : 3
+    "Text" : 1
+    "Markdown" : 1
 ```
