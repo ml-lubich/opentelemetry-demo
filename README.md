@@ -30,9 +30,34 @@ flowchart LR
 ## Table of contents
 
 - [Setup](#setup)
+- [Trace flow (sequence)](#trace-flow-sequence)
 - [Run](#run)
 - [Layout](#layout)
 - [Author](#author)
+
+## Trace flow (sequence)
+
+```mermaid
+sequenceDiagram
+    participant M as main.py
+    participant T as tracer_setup
+    participant P as TracerProvider
+    participant D as demo.py
+    participant B as BatchSpanProcessor
+    participant E as ConsoleSpanExporter
+
+    M->>T: init_tracer()
+    T->>P: register provider + processor
+    P->>B: attach BatchSpanProcessor(E)
+    M->>D: run demo workflow
+    D->>P: start parent span
+    D->>P: start child span (attrs)
+    D->>P: end child span
+    D->>P: end parent span
+    P->>B: queue finished spans
+    B->>E: export(batch)
+    E-->>M: stdout JSON spans
+```
 
 ## Setup
 
