@@ -31,9 +31,27 @@ flowchart LR
 
 - [Setup](#setup)
 - [Trace flow (sequence)](#trace-flow-sequence)
+- [Span lifecycle (state)](#span-lifecycle-state)
 - [Run](#run)
 - [Layout](#layout)
 - [Author](#author)
+
+## Span lifecycle (state)
+
+```mermaid
+stateDiagram-v2
+    [*] --> CREATED: tracer.start_as_current_span
+    CREATED --> ACTIVE: enter context
+    ACTIVE --> ATTRIBUTED: span.set_attribute
+    ACTIVE --> CHILD_STARTED: nested start_as_current_span
+    CHILD_STARTED --> CHILD_ENDED: child .end()
+    CHILD_ENDED --> ACTIVE
+    ATTRIBUTED --> ACTIVE
+    ACTIVE --> ENDED: span.end()
+    ENDED --> QUEUED: BatchSpanProcessor.on_end
+    QUEUED --> EXPORTED: ConsoleSpanExporter.export
+    EXPORTED --> [*]
+```
 
 ## Trace flow (sequence)
 
