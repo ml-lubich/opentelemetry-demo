@@ -35,6 +35,7 @@ flowchart LR
 - [Run](#run)
 - [Layout](#layout)
 - [Author](#author)
+- [🗺️ Repository map](#️-repository-map)
 
 ## Span lifecycle (state)
 
@@ -112,3 +113,17 @@ Spans are printed to the console (BatchSpanProcessor + ConsoleSpanExporter).
 
 Misha Lubich, michaelle.lubich@gmail.com  
 GitHub: https://github.com/ml-lubich
+
+
+## 🗺️ Repository map
+
+Top-level layout of `opentelemetry-demo` rendered as a Mermaid mindmap (auto-generated from the on-disk tree).
+
+```mermaid
+mindmap
+  root((opentelemetry-demo))
+    files
+      README.md
+      main.py
+      requirements.txt
+```
